@@ -19,10 +19,70 @@ const userTally = {
     unanswered: 0
 };
 let currentQuestion = undefined;
-let timeRemaining;
+let timeOutRemaining;
+let isTimeOutRunning = false;
+let counterInterval;
+let isCounting = false;
+let counter = 0;
 
 //cloning the main questions and answers array makes resetting the game 100% easier 
 let questionsAnswers = [...mainQuestionsAnswers]; //this clones an array
+
+
+
+
+function changeQuestion(){
+
+}
+
+function timeOut(){
+    if(isTimeOutRunning) {
+        isTimeOutRunning = false;
+        clearTimeout(timeOutRemaining);
+    }
+    if (isCounting){
+        isCounting = false;
+        clearInterval(counterInterval);
+        counter = 0;
+    }
+    userTally.unanswered++;
+
+}
+
+/*
+    the below function does the following:
+        -if the isTimeOutRunning variable is false
+            -set it to true
+            -run the counterLoop function
+            -start a timeout using the timeOutRemaining variable (so it can be cleared in the future)
+*/
+function mainLoop(){
+    if(!isTimeOutRunning){
+        isTimeOutRunning = true;
+        counterLoop();
+        timeOutRemaining = setTimeout(function(){
+            timeOut();
+        }, 30000)
+    }
+}
+
+
+/*
+    the function below does the following:
+        -if the isCounting variable is set to false
+            -the isCounting variable will be set to true
+            -set the counter to 0
+            -attach an interval of 1 second to the counterInterval variable
+*/
+function counterLoop(){
+    if(!isCounting){
+        isCounting = true;
+        counter = 0;
+        counterInterval = setInterval(function(){
+            counter++;
+        }, 1000)
+    }
+}
 
 /*
     in the function below we are:
