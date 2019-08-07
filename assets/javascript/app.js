@@ -26,9 +26,7 @@ let isCounting = false;
 let counter = 0;
 
 //cloning the main questions and answers array makes resetting the game 100% easier 
-let questionsAnswers = [...mainQuestionsAnswers]; //this clones an array
-
-
+let questionsAnswers = [...mainQuestionsAnswers]; //this clones an array GOOGLE is fun!
 
 
 function changeQuestion(){
@@ -65,7 +63,6 @@ function mainLoop(){
         }, 30000)
     }
 }
-
 
 /*
     the function below does the following:
