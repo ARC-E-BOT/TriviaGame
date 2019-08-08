@@ -213,3 +213,40 @@ body{
         max-height: 200px;
     }
 }
+
+
+@media screen and (max-height: 500px) {
+    #title-text{
+        font-size: 30px;
+        margin-top: 0px;
+        margin-bottom: 30px;
+        margin-top: 3px;
+    }
+    .button{
+        height: 12%;
+        margin-top: 10px;
+        width: 100%;
+        font-size: 80%;
+    }
+    .game-box-text{
+        font-size: 75%;
+        letter-spacing: 3px;
+    }
+    .game-answer-text{
+        font-size: 65%;
+        letter-spacing: 3px;
+    }
+    #main-box{
+        margin-top: -30px;
+    }
+    #game-box{
+        padding: 2px;
+        margin-top: 0;
+        height: 80%;
+    }
+    .answer-image{
+        min-width: 100px;
+        max-width: 200px;
+        max-height: 100px;
+    }
+}
