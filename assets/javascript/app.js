@@ -200,10 +200,15 @@ function createQuestion(){
 
 // this function takes an array of "possible answers" and the actual answer and turns them into buttons
 function makeQuestionButtons(arr, answer){
+    //make a new array to randomize the buttons
+    let newArr = [...arr];
     //looping through each string in the array 
-    arr.forEach((item, index) => {
+    for(let i = 0; i<4; i++){
+        //make a new variable that is the random index number from the new array
+        let index = Math.floor(Math.random() * newArr.length)
+        let item = newArr[index];
         //if the item is not the first item add a line break before the button gets made
-        if(index !== 0){
+        if(i !== 0){
             const br = document.createElement("br");
             gameBox.appendChild(br);
         }
@@ -224,7 +229,8 @@ function makeQuestionButtons(arr, answer){
             })
         }
         gameBox.appendChild(newButton);
-    });
+        newArr.splice(index,1);
+    };
 }
 
 /*
