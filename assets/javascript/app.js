@@ -11,7 +11,7 @@ const mainQuestionsAnswers = [
         answer: "35,000 lines"
     }
 ];
-
+//create the gif variables for winning gifs and loosing gifs 
 const correctGifs = ["https://media.giphy.com/media/YcTBVh0Nxfc3u/giphy.gif", "https://media.giphy.com/media/oUZpDwCBxPAgU/giphy.gif", "http://giphygifs.s3.amazonaws.com/media/di3nQtWT7o98s/giphy.gif","https://media.giphy.com/media/xeHmnqQQVa2hq/giphy.gif"];
 const incorrectGifs = ["https://media.giphy.com/media/7avMUQ3fX0ctW/giphy.gif","https://media.giphy.com/media/y8ElyAPEPZRpm/giphy.gif","http://giphygifs.s3.amazonaws.com/media/BWuqx9UiFIgq4/giphy.gif","https://media.giphy.com/media/mSJzBZCArJhNm/giphy.gif"] 
 
