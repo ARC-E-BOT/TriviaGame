@@ -7,8 +7,48 @@ const mainQuestionsAnswers = [
     },
     {
         question: "How many lines of dialogue did halo 3 have?",
-        answersArray: ["35,000 lines", "40,000 lines", "50,000 lines", "20,000 lines"],
-        answer: "35,000 lines"
+        answersArray: ["39,000 lines", "40,000 lines", "50,000 lines", "20,000 lines"],
+        answer: "39,000 lines"
+    },
+    {
+        question: "How many levels was halo 1 supposed to have?",
+        answersArray: ["15 levels", "19 levels", "25 levels", "21 levels"],
+        answer: "25 levels"
+    },
+    {
+        question: "How many book has the halo franchise sold?",
+        answersArray: ["10 Million", "13 Million", "12 Million", "11 Million"],
+        answer: "11 Million"
+    },
+    {
+        question: "what is Master Chief's call sign",
+        answersArray: ["Sierra 118", "Sierra 117", "Sierra 116", "Sierra 115"],
+        answer: "Sierra 117"
+    },
+    {
+        question: "how much has halo grossed as whole",
+        answersArray: ["$3.2 billion", "$3.8 billion", "$3.4 billion", "$3.3 billion"],
+        answer: "$3.4 billion"
+    },
+    {
+        question: "how many copies of halo were distributed from 2004-2010",
+        answersArray: ["20 billion", "25 billion", "23 billion", "21 billion"],
+        answer: "20 billion"
+    },
+    {
+        question: "the maximum speed of a warthog is",
+        answersArray: ["30 MPH", "60 MPH", "90 MPH", "120 MPH"],
+        answer: "60 MPH"
+    },
+    {
+        question: "how many pounds of pizza did halo 3's dev team eat",
+        answersArray: ["7,000 LBS", "14,000 LBS", "20,000 LBS", "27,000 LBS"],
+        answer: "20,000 LBS"
+    },
+    {
+        question: "what does the Covenant refer to Master Chief as?",
+        answersArray: ["That guy", "Demon", "Spartan", "Sierra 117"],
+        answer: "Demon"
     }
 ];
 //create the gif variables for winning gifs and loosing gifs 
@@ -41,7 +81,7 @@ document.getElementById("main-menu-button").addEventListener("click",function(){
 
 
 /*
-    below creates the end of game screen and asks if the user would like to start over
+    below creates the end of game screen and asks if the user wou7ld like to start over
 */
 function endgame(){
     gameBox.innerHTML = `
