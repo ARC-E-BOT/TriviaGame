@@ -1,5 +1,5 @@
 # Halo Trivia
-this project is a halo based trivia game. in this game you will be tested on your (random and obscure) halo knowledge. 
+this project is a halo based trivia game. in this game you will be tested on your (random and obscure) halo knowledge. so get your xbox controllers out and get ready to play!
 
 # How To Play
 click start in the middle of the screen after that you will be presented with a series of halo based questions. you will have 15 seconds to answer each question otherwise you get marked down as unanswered. at the end of the game you will see your score and be asked if you would like to play again
