@@ -27,6 +27,7 @@ let isTimeOutRunning = false;
 let counterInterval;
 let isCounting = false;
 let counter = 15;
+let previousCount = 0;
 //cloning the main questions and answers array makes resetting the game 100% easier 
 let questionsAnswers = [...mainQuestionsAnswers]; //this clones an array GOOGLE is fun!
 
@@ -41,10 +42,32 @@ document.getElementById("main-menu-button").addEventListener("click",function(){
     <h3 id="time-remaining" class="game-box-text">Time Remaining: 0 Seconds</h3>
     <h3 id="question" class="game-box-text">Out of Time!</h3>
     <h3 id="answer" class="game-answer-text">the correct answer was: floopin</h3>
-    <img src="https://media.giphy.com/media/YcTBVh0Nxfc3u/giphy.gif">
+    <img src="https://media.giphy.com/media/YcTBVh0Nxfc3u/giphy.gif" width="400" height ="400">
 */
-function createAnswerScreen(isCorrect){
+function createAnswerScreen(isCorrect, isOutOfTime){
+    clearTimes();
     gameBox.innerHTML = "";
+    let statement;
+    let correctAnswer = "";
+    let endGif;
+    if(isCorrect){
+        statement = "Correct!";
+        endGif = correctGifs[Math.floor(Math.random() * correctGifs.length)];
+    } else if(isOutOfTime){
+        statement = "Out of Time!";
+        correctAnswer = `the correct answer was: ${currentQuestion.answer}`;
+        endGif = incorrectGifs[Math.floor(Math.random() * incorrectGifs.length)];
+    } else {
+        statement = "Incorrect!";
+        correctAnswer = `the correct answer was: ${currentQuestion.answer}`;
+        endGif = incorrectGifs[Math.floor(Math.random() * incorrectGifs.length)];
+    }
+    gameBox.innerHTML = `
+        <h3 id="time-remaining" class="game-box-text">Time Remaining: ${previousCount} Seconds</h3>
+        <h3 id="question" class="game-box-text">${statement}</h3>
+        <h3 id="answer" class="game-answer-text">${correctAnswer}</h3>
+        <img class="answer-image" src="${endGif}">
+        `;
 }
 
 
@@ -91,10 +114,12 @@ function makeQuestionButtons(arr, answer){
         if(item === answer){
             newButton.addEventListener("click", function(){
                 //run correct answer
+                createAnswerScreen(true, false);
             })
         } else {
             newButton.addEventListener("click", function(){
                 //run incorrect answer
+                createAnswerScreen(false, false);
             })
         }
         gameBox.appendChild(newButton);
@@ -118,7 +143,28 @@ function createHThree(id,className,text){
 }
 //==============================================
 
+/*
+    when the function is called
+    run the clear times function to clear the times and reset the counter 
+    add 1 to the unanswered variable
+    create the answer screen
+*/
 function timeOut(){
+    userTally.unanswered++;
+    createAnswerScreen(false, true);
+}
+
+
+/*
+    if the previously set timeout is still running
+        set the isTimeOutRunning variable to false
+        clear the timeout
+    if the counter is still running 
+        set the isCounting variable to false
+        clear the interval 
+        reset the counter to 15
+*/
+function clearTimes(){
     if(isTimeOutRunning) {
         isTimeOutRunning = false;
         clearTimeout(timeOutRemaining);
@@ -126,10 +172,9 @@ function timeOut(){
     if (isCounting){
         isCounting = false;
         clearInterval(counterInterval);
+        previousCount = counter;
         counter = 15;
     }
-    userTally.unanswered++;
-
 }
 
 /*

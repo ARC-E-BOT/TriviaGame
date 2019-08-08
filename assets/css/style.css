@@ -50,6 +50,12 @@ body{
     text-shadow: 2px 2px 5px white;
 }
 
+.answer-image{
+    min-width: 500px;
+    max-width: 600px;
+    max-height: 500px;
+}
+
 /* 
     beginning of button style
     =========================
