@@ -8,6 +8,6 @@ click start in the middle of the screen after that you will be presented with a 
 https://arc-e-bot.github.io/TriviaGame/
 
 # ToDo
--[x] make the game
--[x] style the game
--[x] create the logic for the game
+- [x] make the game
+- [x] style the game
+- [x] create the logic for the game
