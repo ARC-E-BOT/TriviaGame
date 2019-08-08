@@ -90,3 +90,94 @@ body{
     ==========================
     end of button style
 */
+
+@media screen and (max-width: 980px) {
+    .button{
+        height: 12%;
+        margin-top: 3px;
+        width: 65%;
+        font-size: 250%;
+    }
+    .game-box-text{
+        font-size: 125%;
+        letter-spacing: 3px;
+    }
+    .game-answer-text{
+        font-size: 75%;
+        letter-spacing: 3px;
+    }
+    #game-box{
+        height: 60%;
+    }
+    .answer-image{
+        min-width: 300px;
+        max-width: 500px;
+        max-height: 400px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #title-text{
+        font-family: 'Stalinist One', cursive;
+        color: black;
+        letter-spacing: 6px;
+        text-shadow: 2px 2px 5px white;
+        font-size: 80px;
+        margin: auto;
+        text-align: center;
+        margin-top: 0px;
+        margin-bottom: 30px;
+    }
+    .button{
+        height: 10%;
+        width: 65%;
+        font-size: 200%;
+        margin-top: 3px;
+    }
+    .game-box-text{
+        font-size: 170%;
+        letter-spacing: 3px;
+    }
+    .game-answer-text{
+        font-size: 130%;
+        letter-spacing: 3px;
+    }
+    #game-box{
+        height: 65%;
+    }
+    .answer-image{
+        min-width: 200px;
+        max-width: 300px;
+        max-height: 200px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    #title-text{
+        font-size: 60px;
+        margin-top: 0px;
+        margin-bottom: 30px;
+        margin-top: 3px;
+    }
+    .button{
+        height: 8%;
+        width: 65%;
+        font-size: 150%;
+    }
+    .game-box-text{
+        font-size: 150%;
+        letter-spacing: 3px;
+    }
+    .game-answer-text{
+        font-size: 75%;
+        letter-spacing: 3px;
+    }
+    #game-box{
+        height: 60%;
+    }
+    .answer-image{
+        min-width: 200px;
+        max-width: 300px;
+        max-height: 200px;
+    }
+}
