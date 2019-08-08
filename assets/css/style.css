@@ -1,3 +1,4 @@
+
 body{
     background: url("../images/halo-background.png");
     background-position: center;
@@ -14,20 +15,39 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
-    background: gray;
     margin: 0;
 }
 
 #title-text{
+    font-family: 'Stalinist One', cursive;
+    color: black;
+    letter-spacing: 6px;
+    text-shadow: 2px 2px 5px white;
     font-size: 100px;
     margin: auto;
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
 }
 
 #game-box{
+    background: rgb(51, 51, 51, 0.7);
     margin: auto;
+    height: 78%;
     text-align: center;
+}
+
+.game-box-text{
+    font-size: 200%;
+    font-family: 'Stalinist One', cursive;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 5px white;
+}
+
+.game-answer-text{
+    font-size: 150%;
+    font-family: 'Stalinist One', cursive;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 5px white;
 }
 
 /* 
@@ -35,13 +55,16 @@ body{
     =========================
 */
 .button{
+    background-color: Transparent;
+    font-family: 'Stalinist One', cursive;
+    letter-spacing: 6px;
     border: none;
     width: 40%;
-    height: 10%;
+    height: 15%;
     margin: auto;
-    background: blue;
-    font-size: 200%;
-    color: white;
+    font-size: 300%;
+    color: black;
+    text-shadow: 2px 2px 5px rebeccapurple;
 }
 
 .button:hover{

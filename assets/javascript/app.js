@@ -12,6 +12,9 @@ const mainQuestionsAnswers = [
     }
 ];
 
+const correctGifs = ["https://media.giphy.com/media/YcTBVh0Nxfc3u/giphy.gif", "https://media.giphy.com/media/oUZpDwCBxPAgU/giphy.gif", "http://giphygifs.s3.amazonaws.com/media/di3nQtWT7o98s/giphy.gif","https://media.giphy.com/media/xeHmnqQQVa2hq/giphy.gif"];
+const incorrectGifs = ["https://media.giphy.com/media/7avMUQ3fX0ctW/giphy.gif","https://media.giphy.com/media/y8ElyAPEPZRpm/giphy.gif","http://giphygifs.s3.amazonaws.com/media/BWuqx9UiFIgq4/giphy.gif","https://media.giphy.com/media/mSJzBZCArJhNm/giphy.gif"] 
+
 //declaring global variables
 const userTally = {
     correct: 0,
@@ -23,15 +26,17 @@ let timeOutRemaining;
 let isTimeOutRunning = false;
 let counterInterval;
 let isCounting = false;
-let counter = 0;
+let counter = 15;
 
 //cloning the main questions and answers array makes resetting the game 100% easier 
 let questionsAnswers = [...mainQuestionsAnswers]; //this clones an array GOOGLE is fun!
 
 
-function changeQuestion(){
+document.getElementById("main-menu-button").addEventListener("click",function(){
 
-}
+})
+
+
 
 function timeOut(){
     if(isTimeOutRunning) {
@@ -41,7 +46,7 @@ function timeOut(){
     if (isCounting){
         isCounting = false;
         clearInterval(counterInterval);
-        counter = 0;
+        counter = 15;
     }
     userTally.unanswered++;
 
@@ -60,7 +65,7 @@ function mainLoop(){
         counterLoop();
         timeOutRemaining = setTimeout(function(){
             timeOut();
-        }, 30000)
+        }, 15000)
     }
 }
 
@@ -68,15 +73,15 @@ function mainLoop(){
     the function below does the following:
         -if the isCounting variable is set to false
             -the isCounting variable will be set to true
-            -set the counter to 0
+            -set the counter to 15
             -attach an interval of 1 second to the counterInterval variable
 */
 function counterLoop(){
     if(!isCounting){
         isCounting = true;
-        counter = 0;
+        counter = 15;
         counterInterval = setInterval(function(){
-            counter++;
+            counter--;
         }, 1000)
     }
 }
