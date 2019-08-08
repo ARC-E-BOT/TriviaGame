@@ -35,14 +35,57 @@ let questionsAnswers = [...mainQuestionsAnswers]; //this clones an array GOOGLE 
 const gameBox = document.getElementById("game-box");
 
 document.getElementById("main-menu-button").addEventListener("click",function(){
-    createQuestion()
+    createQuestion();
 })
 
+
+
+/*
+    below creates the end of game screen and asks if the user would like to start over
+*/
+function endgame(){
+    gameBox.innerHTML = `
+    <h3 id="time-remaining" class="game-box-text">Time Remaining: ${previousCount} Seconds</h3>
+    <h3 id="time-remaining" class="game-box-text">Game Over, your Score is below!</h3>
+    <br>
+    <h3 class="game-answer-text">Correct Answers: ${userTally.correct}</h3>
+    <h3 class="game-answer-text">Incorrect Answers: ${userTally.incorrect}</h3>
+    <h3 class="game-answer-text">Unanswered: ${userTally.unanswered}</h3>
+    <br>
+    `;
+    let newButton = document.createElement("button");
+    newButton.className = "button";
+    newButton.textContent = "Start Over?";
+    newButton.addEventListener("click", function(){
+        //restart game
+        restartGame();
+    });
+    gameBox.appendChild(newButton);
+}
+
+function restartGame(){
+    /*
+    resetting all variables to defaults
+    ==============================
+    */
+    userTally.correct = 0;
+    userTally.incorrect = 0;
+    userTally.unanswered = 0;
+    questionsAnswers = [...mainQuestionsAnswers];
+    currentQuestion = undefined;
+    isTimeOutRunning = false;
+    isCounting = false;
+    counter = 15;
+    previousCount = 0;
+    //creating a new question
+    createQuestion();
+}
+
 /* 
-    <h3 id="time-remaining" class="game-box-text">Time Remaining: 0 Seconds</h3>
-    <h3 id="question" class="game-box-text">Out of Time!</h3>
-    <h3 id="answer" class="game-answer-text">the correct answer was: floopin</h3>
-    <img src="https://media.giphy.com/media/YcTBVh0Nxfc3u/giphy.gif" width="400" height ="400">
+    once the function below is called with the 2 args either true or false 
+    run clear times function
+    clear the game box
+    make some local variables to help generate the answer screen html
 */
 function createAnswerScreen(isCorrect, isOutOfTime){
     clearTimes();
@@ -50,28 +93,45 @@ function createAnswerScreen(isCorrect, isOutOfTime){
     let statement;
     let correctAnswer = "";
     let endGif;
+    let localTimeout;
     if(isCorrect){
+        // set the statement variable string to correct and set the end gif to a random gif from the correct gifs
         statement = "Correct!";
         endGif = correctGifs[Math.floor(Math.random() * correctGifs.length)];
+        //add one to correct variable
+        userTally.correct++;
     } else if(isOutOfTime){
+        //set statement to "Out of Time!" and set the correct answer string to the correct answer to help the user learn the correct answer and get a random incorrect gif
         statement = "Out of Time!";
         correctAnswer = `the correct answer was: ${currentQuestion.answer}`;
         endGif = incorrectGifs[Math.floor(Math.random() * incorrectGifs.length)];
+        //add one to unanswered variable
+        userTally.unanswered++;
     } else {
+        //set statement to "Incorrect!" and set the correct answer string to the correct answer to help the user learn the correct answer and get a random incorrect gif
         statement = "Incorrect!";
         correctAnswer = `the correct answer was: ${currentQuestion.answer}`;
         endGif = incorrectGifs[Math.floor(Math.random() * incorrectGifs.length)];
+        //add one to incorrect variable
+        userTally.incorrect++;
     }
+    /*
+        here we see that if nothing has been done to the correct answer string then it will not actually show up on the screen
+    */
     gameBox.innerHTML = `
         <h3 id="time-remaining" class="game-box-text">Time Remaining: ${previousCount} Seconds</h3>
         <h3 id="question" class="game-box-text">${statement}</h3>
         <h3 id="answer" class="game-answer-text">${correctAnswer}</h3>
         <img class="answer-image" src="${endGif}">
         `;
+    /*
+        set a time out to keep the screen loaded for 3 seconds and then try to create questions
+    */
+    localTimeout = setTimeout(function(){
+        clearTimeout(localTimeout);
+        createQuestion();
+    },3000)
 }
-
-
-//  ===============================================================
 
 /*
     beginning of the question screen creation
@@ -88,6 +148,7 @@ function createQuestion(){
     questionChooser();
     if(currentQuestion === undefined){
         //run endgame
+        endgame();
     } else {
         gameBox.innerHTML = "";
         gameBox.appendChild(createHThree("time-remaining","game-box-text",`Time Remaining: ${counter} Seconds`));
@@ -144,18 +205,6 @@ function createHThree(id,className,text){
 //==============================================
 
 /*
-    when the function is called
-    run the clear times function to clear the times and reset the counter 
-    add 1 to the unanswered variable
-    create the answer screen
-*/
-function timeOut(){
-    userTally.unanswered++;
-    createAnswerScreen(false, true);
-}
-
-
-/*
     if the previously set timeout is still running
         set the isTimeOutRunning variable to false
         clear the timeout
@@ -189,7 +238,7 @@ function mainLoop(){
         isTimeOutRunning = true;
         counterLoop();
         timeOutRemaining = setTimeout(function(){
-            timeOut();
+            createAnswerScreen(false, true);
         }, 15000)
     }
 }
